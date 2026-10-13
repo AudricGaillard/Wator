@@ -1,24 +1,30 @@
-import config as cfg
-from random import choice
+
+from random import randint, choice
+
 
 # Classe parente pour gérer tous les poissons (thons et requins)
 class Fish:
-    def __init__(self, x:int, y:int):
-        self.x = x 
+
+    def __init__(self, x:int, y:int, grid_size:tuple):
+        self.x = x  # Cordonnées du  poisson
         self.y = y
-        # Cordonnées des poissons
+        self._GRID_WIDTH = grid_size[0]
+        self._GRID_HEIGHT = grid_size[1]
+
 
     # Fonction de déplacement 
     def move(self, surroundings:dict):
+
         if 0 in list(surroundings.values()):
             # S'il y a un moins une case vide
             space = choice(list(surroundings.keys()))
             # Choice va choisir une clé au hasard, correspondant au type de déplacement
-            # (voir la fonction neighbours dans la classe world)
+            # (voir la fonctione neighbours dans la classe world)
             while surroundings[space]!=0:
-                # Si la valeur de la clé choisie n'est pas une case vide
+                surroundings.pop(space)
                 space = choice(list(surroundings.keys()))
-                # On rapelle choice pour prendre 
+
+            # Le poisson effectue le déplacement dans sa tête
             match space:
                 case 'U':
                     self.y-=1
@@ -29,38 +35,27 @@ class Fish:
                 case 'R':
                     self.x+=1
 
-            if not (0 <= self.x < cfg.GRID_WIDTH): self.x %= cfg.GRID_WIDTH
+            # Correction si sorti de grille
+            if not (0 <= self.x < self._GRID_WIDTH): self.x %= self._GRID_WIDTH
+            if not (0 <= self.y < self._GRID_HEIGHT): self.y %= self._GRID_HEIGHT
 
-            if not (0 <= self.y < cfg.GRID_HEIGHT): self.y %= cfg.GRID_HEIGHT
+            # Le poisson prévient World qu'il se déplace
             return True
         else:
+            # Le poisson prévient World qu'il ne s'est pas déplacé
             return False
 
-        
-        
-        
-        
-        
-        
-        
-        # new_x = 0
-        # new_y = 0
 
-        # while new_x==0 and new_y==0:
-        #     new_x = randint(-1,1)
-        #     new_y = randint(-1,1)
-        #     # On instancie au hasard deux valeurs valant soit 1,
-        #     # soit -1 ou 0 (on continue la boucle tant que 0 les deux vallent 0 pour que le
-        #     # poisson ne reste pas sur place)
-        
-        # self.x += new_x
-        # self.y += new_y
-        # # On incrémente/décrémente les coordonnées du poissons selon les valeurs obtenues
-        # # avec randint
 
-        
 
-        # # Dans les conditions, on vérifie si x ou y sont plus petit que 0 ou dépasse la
-        # # longueur/largeur du tableau.
 
-        # # Si c'est le cas, on utilise le modulo pour calculer les nouvelles coordonées
+#test move à supprimer
+if __name__ == "__main__":
+    coord = {
+        "U": Fish,
+        "R": Fish,
+        "D": 0,
+        "L": Fish
+    }
+    test = Fish(5,5,(10,10))
+    print( test.move(coord) )
