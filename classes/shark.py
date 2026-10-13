@@ -21,6 +21,7 @@ class Shark(Fish):
 
     # Fonction de déplacement 
     def move(self, surroundings:dict):
+        moved=False
         """
         
         """
@@ -32,18 +33,28 @@ class Shark(Fish):
 
             # Travaille sur une copy du dictionnaire car on utilise .pop plus bas
             surroundings_copy = surroundings.copy()
+            if type(action)!=int:
+                element_exist=any(type(space)==Tuna for space in surroundings_copy.values())
+            else:
+                element_exist=any(type(space)==int for space in surroundings_copy.values())
+            
 
             # Recherche de cible, le(s) proie(s) sinon un emplacement une case vide
-            if action in list(surroundings_copy.values()):
+            if element_exist:
 
                 # S'il y a un moins une case avec la cible
                 space = choice(list(surroundings_copy.keys()))
 
                 # Choice va choisir une clé au hasard, correspondant à l'action
                 # (voir la fonction neighbours dans la classe world)
-                while surroundings_copy[space] != action:
-                    surroundings_copy.pop(space)
-                    space = choice(list(surroundings_copy.keys()))
+                if action==0:
+                    while surroundings_copy[space] != 0:
+                        surroundings_copy.pop(space)
+                        space = choice(list(surroundings_copy.keys()))
+                else:
+                    while type(surroundings_copy[space])!=Tuna:
+                        surroundings_copy.pop(space)
+                        space = choice(list(surroundings_copy.keys()))
 
                 # Le requin effectue le déplacement dans sa tête
                 match space:
@@ -69,12 +80,9 @@ class Shark(Fish):
                           self._energy = self.__ENERGY_MAX
 
                 # Le requin prévient World qu'il se déplace pour manger ou se balader
-                return True
-            
-            elif action == 0:
-
-                # Le requin prévient World qu'il ne s'est pas déplacé
-                return False
+                moved=True
+                break
+        return moved
 
 
 
