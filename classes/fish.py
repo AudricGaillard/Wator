@@ -1,22 +1,22 @@
-
-from random import randint, choice
+import config as cfg
+from random import choice
 
 
 # Classe parente pour gérer tous les poissons (thons et requins).
 class Fish:
 
-    def __init__(self, x:int, y:int, grid_size:tuple):
+    def __init__(self, x:int, y:int):
 
         # Cordonnées du poisson.
         self.x = x
         self.y = y
 
         # Constante(s) de la grille monde.
-        self._GRID_WIDTH = grid_size[0]
-        self._GRID_HEIGHT = grid_size[1]
+        self._GRID_WIDTH = cfg.GRID_WIDTH
+        self._GRID_HEIGHT = cfg.GRID_HEIGHT
 
-        # Constante du delai de reproduction, sera surchargé par les classes enfants.
-        self._SPAWN_DELAY = int() 
+        # Constante du delai de reproduction
+        self._SPAWN_DELAY = int()  # sera surchargé par une classe enfant.
 
         self._gestation = 0
 
@@ -80,10 +80,6 @@ class Fish:
                     spawning['y'] +=1
                 case 'L':
                     spawning['x'] -=1
-
-            # Correction si sorti de grille.
-            if not (0 <= spawning['x'] < self._GRID_WIDTH): spawning['x'] %= self._GRID_WIDTH
-            if not (0 <= spawning['y'] < self._GRID_HEIGHT): spawning['y'] %= self._GRID_HEIGHT
 
             # La naissance remet la gestation à 0.
             self._gestation = 0
