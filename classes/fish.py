@@ -2,16 +2,16 @@
 from random import randint, choice
 
 
-# Classe parente pour gérer tous les poissons (thons et requins)
+# Classe parente pour gérer tous les poissons (thons et requins).
 class Fish:
 
     def __init__(self, x:int, y:int, grid_size:tuple):
 
-        # Cordonnées du poisson
+        # Cordonnées du poisson.
         self.x = x
         self.y = y
 
-        # Constante(s) de la grille monde
+        # Constante(s) de la grille monde.
         self._GRID_WIDTH = grid_size[0]
         self._GRID_HEIGHT = grid_size[1]
 
@@ -21,19 +21,18 @@ class Fish:
         self._gestation = 0
 
 
-    # Fonction de déplacement 
+    # Fonction de déplacement
     def move(self, surroundings:dict):
 
         if 0 in list(surroundings.values()):
-            # S'il y a un moins une case vide
+            # Choix aléatoire d'une case adjacente.
             space = choice(list(surroundings.keys()))
-            # Choice va choisir une clé au hasard, correspondant au type de déplacement
-            # (voir la fonctione neighbours dans la classe world)
+            # Si la case n'est pas libre, alors l'oublier et en choisir une autre jusqu'à en trouver une libre.
             while surroundings[space]!=0:
                 surroundings.pop(space)
                 space = choice(list(surroundings.keys()))
 
-            # Le poisson effectue le déplacement dans sa tête
+            # Le poisson a choisi une case et en retient la direction.
             match space:
                 case 'U':
                     self.y-=1
@@ -44,18 +43,18 @@ class Fish:
                 case 'R':
                     self.x+=1
 
-            # Correction si sorti de grille
+            # Correction si sorti de grille.
             if not (0 <= self.x < self._GRID_WIDTH): self.x %= self._GRID_WIDTH
             if not (0 <= self.y < self._GRID_HEIGHT): self.y %= self._GRID_HEIGHT
 
-            # Le poisson prévient World qu'il se déplace
+            # Le poisson avertit au monde qu'il se déplace.
             return True
         else:
-            # Le poisson prévient World qu'il ne s'est pas déplacé
+            # Le poisson avertit au monde qu'il ne s'est pas déplacé.
             return False
 
 
-    # Fonction de reproduction du poisson
+    # Fonction de reproduction du poisson.
     def reproduce(self, surroundings:dict):
         """
 
@@ -63,7 +62,7 @@ class Fish:
         # Si la gestation est arrivé à terme ET qu'il y a une case libre autour du poisson, alors mettre à bas.
         if self._gestation >= self._SPAWN_DELAY and 0 in list(surroundings.values()):
           
-            # Choix aléatoire d'une case adjacente
+            # Choix aléatoire d'une case adjacente.
             space = choice(list(surroundings.keys()))
             # Si la case n'est pas libre, alors l'oublier et en choisir une autre jusqu'à en trouver une libre.
             while surroundings[space] != 0:
@@ -89,9 +88,9 @@ class Fish:
             # La naissance remet la gestation à 0.
             self._gestation = 0
           
-            # Le requin avertit au monde la direction de la mise à bas.
+            # Le poisson avertit au monde la direction de la mise à bas.
             return spawning # dict{'x','y'}
           
         else:
-            # A defaut, le requin avertit au monde qu'il n'a pas pu mettre à bas.
+            # A defaut, le poisson avertit au monde qu'il n'a pas pu mettre à bas.
             return False
