@@ -23,7 +23,15 @@ class Fish:
 
     # Fonction de déplacement
     def move(self, surroundings:dict):
+        """
+        Prends un dictionnaire contenant les cases adjacentes au poisson et affecte ses coordonnées
+        en fonction du type de déplacement choisie
 
+        Args:
+            surrondings(dict):Le dictionnaire avec les cases adjacentes
+        Returns:
+            True/False:Si le poisson a pu effectuer un déplacement ou non
+        """
         if 0 in list(surroundings.values()):
             # Choix aléatoire d'une case adjacente.
             space = choice(list(surroundings.keys()))
@@ -57,7 +65,14 @@ class Fish:
     # Fonction de reproduction du poisson.
     def reproduce(self, surroundings:dict):
         """
+        Prends un dictionnaire contenant les cases adjacentes au poisson et renvoie un tuple de
+        coordonnées indiquant l'emplacement du nouveau poisson
 
+        Args:
+            surroundings(dict):Le dictionnaire contenant les cases adjacentes
+        Returns:
+            tuple:Un tuple avec les coordonnées (x,y) du nouveau poisson
+            False:Si le poisson n'a trouvé aucun emplacement libre
         """
         # Si la gestation est arrivé à terme ET qu'il y a une case libre autour du poisson, alors mettre à bas.
         if self._gestation >= self._SPAWN_DELAY and 0 in list(surroundings.values()):

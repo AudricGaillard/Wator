@@ -2,9 +2,9 @@
 ## Écosystème Simulé de Requins et Poissons
 
 ## Table des matières
-- [Description\du\projet](#description-du-projet)
-- [Fonctionnement\de\wator](#fonctionnement-de-wator-)
-- [Structure\du\projet](#structure-du-projet)
+- [Description du projet](#description-du-projet)
+- [Fonctionnement de wator](#fonctionnement-de-wator-)
+- [Structure du projet](#structure-du-projet)
 
 ### Description du projet
 Ce projet vise à simuler le principe de Wator, une simulation de population dynamique représentant un écosystème de requin et thons.
