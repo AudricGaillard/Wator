@@ -7,14 +7,10 @@ class Shark(Fish):
     """
     Classe Requin (Shark), un requin est une espèce de Poisson (Fish).
     """
-    def __init__(self, x:int, y:int, grid_size:tuple):
-        """
+    def __init__(self, x:int, y:int):
 
-        """
-        super().__init__(x, y, grid_size)
-        # Constante(s) de la gille monde.
-        self._GRID_WIDTH = grid_size[0]
-        self._GRID_HEIGHT = grid_size[1]
+        super().__init__(x, y)
+
         # Constante(s) sur le métabolisme du requin.
         self.__ENERGY_ON_FEED = cfg.SHARK_ENERGY_ON_FEED
         self.__ENERGY_MAX = cfg.SHARK_STARVATION_TIME
@@ -24,7 +20,7 @@ class Shark(Fish):
         # SURCHARGE la même constante de la classe parent poisson (Fish) mais utilise la même fonction de reproduction.
         self._SPAWN_DELAY = cfg.SHARK_GESTATION_PERIOD
 
-
+        # La jauge d'energie est rempli au maximum dès le depart.
         self._energy = self.__ENERGY_MAX
        
 
