@@ -92,5 +92,6 @@ class Fish:
             return spawning # dict{'x','y'}
           
         else:
-            # A defaut, le poisson avertit au monde qu'il n'a pas pu mettre à bas.
+            # A defaut, la gestation avance et le poisson avertit au monde qu'il n'a pas pu mettre à bas.
+            self._gestation +=1
             return False
