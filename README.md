@@ -1,13 +1,8 @@
 # wa-tor
 ## Écosystème Simulé de Requins et Poissons
 
-## Table des matières
-- [Description du projet](#description-du-projet)
-- [Fonctionnement de wator](#fonctionnement-de-wator-)
-- [Structure du projet](#structure-du-projet)
-
 ### Description du projet
-Ce projet vise à simuler le principe de Wator, une simulation de population dynamique représentant un écosystème de requin et thons.
+Ce projet vise à simuler le principe de Wator, une simulation de population dynamique représentant un écosystème de requin et de thons.
 
 Explication complète de Wator : https://en.wikipedia.org/wiki/Wa-Tor
 
@@ -19,7 +14,7 @@ Des requins et des thons se déplacent chacun sur une grille, et peuvent réalis
 ### Structure du projet
 Le projet est structurée ainsi :
 - Le dossier classes contient les fichiers gérant les classes pour les poissons, la grille et le monde
-- config.py est un fichier contenant des constantes comme la taille de la grille ou le nombre de thons au départ, servant au bon fonctionnement du projet
+- config.py est un fichier contenant des constantes comme la taille de la grille ou le nombre de thons au départ, servant au bon fonctionnement du projet. Ces constantes peuvent être modifiables.
 - main.py est le fichier principal a exécuter 
 
 
