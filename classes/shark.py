@@ -27,7 +27,13 @@ class Shark(Fish):
     # Fonction de déplacement du requin.
     def move(self, surroundings:dict):
         """
+        Prends un dictionnaire contenant les cases adjacentes au requin et affecte ses coordonnées
+        et son énergie en fonction du type de déplacement choisie et des éléments autour de lui
         
+        Args:
+            surrondings(dict):Le dictionnaire avec les cases adjacentes
+        Returns:
+            True/False:Si le requin a pu effectuer un déplacement ou non
         """
         # En bougeant le requin brule des calories.
         self._energy -= 1
