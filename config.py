@@ -2,27 +2,28 @@
 ###  Temps de la simulation (tours/chronons)
 #
 # Nombre de chronons          0 = infini
-MAX_CHRONONS:int = 1000
-#
+MAX_CHRONONS:int = 0
+# Vitesse de chronons (en millisecondes)
+CHRONONS_SPEED = 300
 
 #==================================================
 ### Taille de la grille monde
 #
 # Largeur
-GRID_WIDTH:int  = 10
+GRID_WIDTH:int  = 30
 #
 # Hauteur
-GRID_HEIGHT:int = 10
+GRID_HEIGHT:int = 12
 #
 
 #==================================================
 ### Populations de départ des poissons
 #
 # Thons
-TUNA_START_POPULATION:int  = 10
+TUNA_START_POPULATION:int  = 100
 #
 # Requins
-SHARK_START_POPULATION:int = 5
+SHARK_START_POPULATION:int = 10
 #
 
 #==================================================
@@ -38,7 +39,7 @@ SHARK_GESTATION_PERIOD:int = 12         # 12 ?
 #==================================================
 ### Alimentation des requins
 #
-# Tours avant mort de faim
+# Tours avant mort de faim (Energie)
 SHARK_STARVATION_TIME:int = 10
 #
 # Energie/Tours rendus par repas
