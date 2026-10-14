@@ -1,51 +1,58 @@
 import config as cfg
 from classes.fish import Fish
 from classes.tuna import Tuna
-from random import randint, choice
+from random import choice
 
 class Shark(Fish):
     """
-    
+    Classe Requin (Shark), un requin est une espèce de Poisson (Fish).
     """
     def __init__(self, x:int, y:int, grid_size:tuple):
+        """
+
+        """
         super().__init__(x, y, grid_size)
+        # Constante(s) de la gille monde.
         self._GRID_WIDTH = grid_size[0]
         self._GRID_HEIGHT = grid_size[1]
+        # Constante(s) sur le métabolisme du requin.
         self.__ENERGY_ON_FEED = cfg.SHARK_ENERGY_ON_FEED
         self.__ENERGY_MAX = cfg.SHARK_STARVATION_TIME
-
-        self._energy = self.__ENERGY_MAX
-
         self._ALL_FOOD = [Tuna]
 
+        # Constante pour la reproduction du requin,
+        # SURCHARGE la même constante de la classe parent poisson (Fish) mais utilise la même fonction de reproduction.
+        self._SPAWN_DELAY = cfg.SHARK_GESTATION_PERIOD
 
-    # Fonction de déplacement 
+
+        self._energy = self.__ENERGY_MAX
+       
+
+    # Fonction de déplacement du requin.
     def move(self, surroundings:dict):
         """
         
         """
-        # Le requin brule des calorie
+        # En bougeant le requin brule des calories.
         self._energy -= 1
             
-        # La boucle cherche un Thon à manger (en se déplacant) en premier, sinon le fait se balader
-        for action in (self._ALL_FOOD + [0]):    
+        # Le requin cherche à se déplace vers la nourriture an premier, sinon il se balader.
+        for action in self._ALL_FOOD+[0]:    
 
-            # Travaille sur une copy du dictionnaire car on utilise .pop plus bas
+            # Travaille sur une copie du dictionnaire car .pop sera utilisé dessus.
             surroundings_copy = surroundings.copy()
 
-            # Recherche de cible, le(s) proie(s) sinon un emplacement une case vide
+            # Recherche de cible, le(s) proie(s) sinon un emplacement une case vide.
             if action in list(surroundings_copy.values()):
 
-                # S'il y a un moins une case avec la cible
-                space = choice(list(surroundings_copy.keys()))
-
-                # Choice va choisir une clé au hasard, correspondant à l'action
-                # (voir la fonction neighbours dans la classe world)
+                # Choix aléatoire d'une case adjacente
+                space = choice(list(surroundings_copy.keys()))               
+                # Si la case n'est pas libre, alors l'oublier et en choisir une autre jusqu'à en trouver une libre.
                 while surroundings_copy[space] != action:
                     surroundings_copy.pop(space)
                     space = choice(list(surroundings_copy.keys()))
 
-                # Le requin effectue le déplacement dans sa tête
+                # Le requin va se déplacer (et en previent le monde plus bas au retour de la fonction).
                 match space:
                     case 'U':
                         self.y-=1
@@ -68,27 +75,10 @@ class Shark(Fish):
                     if self._energy > self.__ENERGY_MAX :
                           self._energy = self.__ENERGY_MAX
 
-                # Le requin prévient World qu'il se déplace pour manger ou se balader
+                # Le requin avertit au monde qu'il se déplace bien pour manger ou se balader
                 return True
             
             elif action == 0:
 
-                # Le requin prévient World qu'il ne s'est pas déplacé
+                # Le requin avertit au monde qu'il ne s'est pas déplacé
                 return False
-
-
-
-
-
-#test local - à retirer
-if __name__ == "__main__":
-    coord = {
-        "U": 0,
-        "R": 0,
-        "D": 0,
-        "L": 0
-    }
-    test = Shark(5,5)
-    print(test.move(coord))
-
-        
