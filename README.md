@@ -18,7 +18,7 @@ Le projet est structurée ainsi :
 - main.py est le fichier principal a exécuter
 
 ### Démonstration
-[![Démonstration du projet](./readme_assets/wator_demo.mp4)](./readme_assets/wator_demo.mp4)
+
 
 <p align="center">
   <img src="./readme_assets/gif" alt="GIF requin qui tourne">
