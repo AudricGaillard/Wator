@@ -4,7 +4,9 @@ from random import choice
 
 # Classe parente pour gérer tous les poissons (thons et requins).
 class Fish:
-
+    """
+    Classe parrente de tous les poissons
+    """
     def __init__(self, x:int, y:int):
 
         # Cordonnées du poisson.
