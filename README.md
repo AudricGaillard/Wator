@@ -17,8 +17,15 @@ Le projet est structurée ainsi :
 - config.py est un fichier contenant des constantes comme la taille de la grille ou le nombre de thons au départ, servant au bon fonctionnement du projet. Ces constantes peuvent être modifiables.
 - main.py est le fichier principal a exécuter
 
+<video align="center" controls width="640" height="360" poster="image-apercu.jpg">
+  <source src="./readme_assets/wator_demo.mp4" type="video/mp4" />
+  <source src="./readme_assets/wator_demo.mp4" type="video/webm" />
+  Votre navigateur ne prend pas en charge la lecture de vidéos.
+</video>
 
-![GIF requin qui tourne](./readme_assets/gif)
+<p align="center">
+  <img src="./readme_assets/gif" alt="GIF requin qui tourne">
+</p>
 
 
 
