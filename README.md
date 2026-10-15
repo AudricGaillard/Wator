@@ -20,6 +20,10 @@ Le projet est structurée ainsi :
 ### Démonstration
 
 
+https://github.com/user-attachments/assets/4d45cc17-13cb-4cd2-ae55-39750347c3c3
+
+
+
 <p align="center">
   <img src="./readme_assets/gif" alt="GIF requin qui tourne">
 </p>
