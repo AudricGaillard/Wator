@@ -4,7 +4,7 @@
 # Nombre de chronons          0 = infini
 MAX_CHRONONS:int = 0
 # Vitesse de chronons (en millisecondes)
-CHRONONS_SPEED = 100
+CHRONONS_SPEED:int = 100
 
 #==================================================
 ### Taille de la grille monde

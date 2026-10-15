@@ -15,7 +15,10 @@ Des requins et des thons se déplacent chacun sur une grille, et peuvent réalis
 Le projet est structurée ainsi :
 - Le dossier classes contient les fichiers gérant les classes pour les poissons, la grille et le monde
 - config.py est un fichier contenant des constantes comme la taille de la grille ou le nombre de thons au départ, servant au bon fonctionnement du projet. Ces constantes peuvent être modifiables.
-- main.py est le fichier principal a exécuter 
+- main.py est le fichier principal a exécuter
+
+
+![GIF requin qui tourne](./readme_assets/gif)
 
 
 

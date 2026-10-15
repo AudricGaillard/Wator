@@ -9,8 +9,8 @@ class WorldGrid:
         self._grid_height = grid_height
         self.__grid_creation()
 
-        # On corrige les coordonnée sorties hors des frontières
-        recup_x, recup_y = self.coordinate_correction(grid_width, grid_height)
+        # # On corrige les coordonnée sorties hors des frontières
+        # recup_x, recup_y = self.coordinate_correction(grid_width, grid_height)
 
 
     # Création de la grille dans objet
@@ -28,31 +28,31 @@ class WorldGrid:
                 self.__world_grid[line].append(0)
 
 
-    # Retourne simplement la grille, non protégé actuellement.
+    # Getter qui retourne la grille privée dans la classe
     @property
     def world_grid(self):
         return self.__world_grid
 
 
-    # Fonction de correction de coordonées hors limites
-    def coordinate_correction(self, x:int, y:int):
-        """
-        Retourne un tuple des deux coordonnées X et Y dans les limites du tableau.
+    # # Fonction de correction de coordonées hors limites
+    # def coordinate_correction(self, x:int, y:int):
+    #     """
+    #     Retourne un tuple des deux coordonnées X et Y dans les limites du tableau.
         
-        Arg:
-            x (`int`): coordonnée X
-            y (`int`): coordonnée Y
+    #     Arg:
+    #         x (`int`): coordonnée X
+    #         y (`int`): coordonnée Y
 
-        Returns:
-            `tuple[int, int]` : Retourne les valeurs X et Y corrigées dans un tuple
-        """
-        wid = self._grid_width
-        hei = self._grid_height
+    #     Returns:
+    #         `tuple[int, int]` : Retourne les valeurs X et Y corrigées dans un tuple
+    #     """
+    #     wid = self._grid_width
+    #     hei = self._grid_height
 
-        if not (0 <= x < wid): x %= wid
-        if not (0 <= y < hei): y %= hei
+    #     if not (0 <= x < wid): x %= wid
+    #     if not (0 <= y < hei): y %= hei
             
-        return x, y
+    #     return x, y
 
 
 
